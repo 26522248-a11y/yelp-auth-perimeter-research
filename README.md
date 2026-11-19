@@ -43,9 +43,33 @@ Net result: a fully automated, zero-interaction, zero-captcha-cost pipeline that
 | Path | Contents |
 |---|---|
 | `report/yelp-session-2026-11-19.md` | Full research report — timeline, evidence, retractions, CVSS reasoning, fix recommendations |
-| `session/transcript-main-session.md` | Complete session transcript (243 messages, 201 tool calls) exported from the OpenCode store |
+| `session/transcript-main-session.md` | Main session, **full fidelity** (243 records, 201 tool calls, 184 reasoning blocks, complete outputs) |
+| `session/related/` | The 5 precursor sessions of the same investigation, also full fidelity |
 | `poc/` | The Node/CDP scripts used for the PoC (proxy credentials redacted) |
 | `evidence/` | Per-request JSONL evidence captured via CDP `Network.getResponseBody` |
+| `artifacts/session-artifacts.zip` | **All 102 working files** produced during testing (raw HTML captures, curl dumps, JSONL, scripts) — 6.83 MB uncompressed |
+| `artifacts/MANIFEST.csv` | SHA-256 + byte size for every file in the zip |
+
+## Completeness (coverage of the original material)
+
+Measured against the source records in the OpenCode session store, not estimated:
+
+| Material | Unit | Original | Archived | Coverage |
+|---|---|---|---|---|
+| Main session content | characters | 1,029,537 | 1,029,537 | **100.00%** |
+| — user messages | chars | 37,268 | 37,268 | 100% |
+| — assistant text | chars | 68,246 | 68,246 | 100% |
+| — reasoning blocks | chars | 508,313 | 508,313 | 100% |
+| — tool inputs | chars | 147,115 | 147,115 | 100% |
+| — tool outputs | chars | 268,595 | 268,595 | 100% |
+| Related sessions (5) | chars | 1,228,378 | 1,228,378 | **100.00%** |
+| Working artifacts | files / bytes | 102 / 6,825,599 | 102 / 6,825,599 | **100%** |
+| Research report | chars | 33,270 | 33,223 | 99.86% (3 secrets redacted) |
+
+Verification method: every user text, assistant text, reasoning block, tool input and tool output was
+extracted from `session_message.data` and asserted to appear verbatim in the exported Markdown
+(0 missing chunks). Only bookkeeping records (`idle`, `agent-switched`) and per-message token/cost
+metadata are omitted — they carry no content.
 
 ## PoC scripts
 
