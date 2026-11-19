@@ -6,9 +6,9 @@ conducted 2026-11-18 → 2026-11-19 on production endpoints with researcher-owne
 **Final severity reached: Critical 9.1** — `AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N`
 
 > ⚠️ **This repository contains sensitive material.**
-> The report and PoC scripts reference commercial proxy credentials and an API key that were live during testing.
-> They are redacted in `poc/`, but the full report in `report/` is the raw working copy — rotate everything listed
-> in its §13 before sharing. Keep this repository **private**.
+> Proxy credentials, the Capsolver API key and account identifiers were redacted with `<REDACTED>` placeholders
+> before committing. Even so, the material describes a working attack against a live production service — keep this
+> repository **private** and do not republish it outside the disclosure process.
 
 ---
 
